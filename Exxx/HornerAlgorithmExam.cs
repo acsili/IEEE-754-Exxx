@@ -48,8 +48,7 @@ namespace Exxx
 
         public static byte[] Bytes(string path) => File.ReadAllBytes(path);
 
-
-        public static double[] BytesToArrayOfDouble(byte[] buffer)
+        public static double[] ToArrayOfDouble(byte[] buffer)
         {
             var arr = Enumerable.Range(0, buffer.Length / 8).ToArray();
             var list = new List<double>();
@@ -99,8 +98,36 @@ namespace Exxx
             }
             return (arguments.ToArray(), coefficients.ToArray());
         }
-
         public static double AprioriError(double[] a, double x)
+        {
+            double w = 2.0;  
+            double b = 10.0;
+            double u = Ulp(1.0);
+
+            double bound = 1.0 / 2.0 * (Math.Sqrt(w / b) * Math.Pow(u, -0.5) - 1);
+
+            int n = a.Length;
+            double e = a[n - 1];
+            if (n < bound)
+            {
+                for (int i = 1; i < n; i++)
+                {
+                    e = e * Math.Abs(x) + Math.Abs(a[i]);
+                }
+                e = 2 * (n - 1) * U * e;
+            }
+            else
+            {
+                for (int i = 1; i < n; i++)
+                {
+                    e = e * Math.Abs(x) + Math.Abs(a[i]);
+                }
+                e = 2 * (n - 1) * U / (1 - 2 * (n - 1) * U) * e;
+            }
+            return e;
+        }
+
+        /*public static double AprioriError(double[] a, double x)
         {
             int n = a.Length;
             double e = a[n - 1];
@@ -110,7 +137,7 @@ namespace Exxx
             }
             e = 2 * (n - 1) * U / (1 - 2 * (n - 1) * U) * e;
             return e;
-        }
+        }*/
 
         public static double PosterioriError(double[] a, double x)
         {

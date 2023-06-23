@@ -13,9 +13,9 @@ Console.WriteLine(Utils.GetNumberFromConstants(c));*/
 Console.WriteLine(Utils.ToBinaryString(value));*/
 
 
-var pathToLE = Path.Combine(Environment.CurrentDirectory, "polynomTest2LE.dat");
+/*var pathToLE = Path.Combine(Environment.CurrentDirectory, "polynomTest2LE.dat");
 var bytesLE = HornerAlgorithmExam.Bytes(pathToLE);
-var arrLE = HornerAlgorithmExam.BytesToArrayOfDouble(bytesLE);
+var arrLE = HornerAlgorithmExam.ToArrayOfDouble(bytesLE);
 (double[] arguments, double[] coefficients) argCoeffLE = HornerAlgorithmExam.CoefficientsAndArgsLittleEnding(arrLE);
 foreach (double num in argCoeffLE.arguments)
 {
@@ -32,41 +32,45 @@ Console.WriteLine();
 
 foreach (double num in argCoeffLE.arguments)
 {
-    /*Console.WriteLine(HornerAlgorithmExam.HornerAlgorithm(argCoeffLE.coefficients, num));
-    Console.WriteLine(HornerAlgorithmExam.PosterioriError(argCoeffLE.coefficients, num));*/
-    Console.WriteLine(HornerAlgorithmExam.PolynomialValue(argCoeffLE.coefficients, num));
-    Console.WriteLine(HornerAlgorithmExam.PosterioriError(argCoeffLE.coefficients, num));
-    Console.WriteLine(HornerAlgorithmExam.AprioriError(argCoeffLE.coefficients, num));
+    Console.WriteLine("Polynomial Value " + HornerAlgorithmExam.PolynomialValue(argCoeffLE.coefficients, num));
+    Console.WriteLine("Posteriori Error " + HornerAlgorithmExam.PosterioriError(argCoeffLE.coefficients, num));
+    Console.WriteLine("Apriori Error " + HornerAlgorithmExam.AprioriError(argCoeffLE.coefficients, num));
     Console.WriteLine();
 }
 
 
 
+*/
 
 
 
-
-/*var pathToBE = Path.Combine(Environment.CurrentDirectory, "polynomTest1BE.dat");
+var pathToBE = Path.Combine(Environment.CurrentDirectory, "polynomTest1BE.dat");
 var bytesBE = HornerAlgorithmExam.Bytes(pathToBE);
 var newBytesBE = Enumerable.Reverse(bytesBE).ToArray();
-var arrBE = HornerAlgorithmExam.BytesToArrayOfDouble(newBytesBE);
+var arrBE = HornerAlgorithmExam.ToArrayOfDouble(newBytesBE);
 foreach (var item in arrBE)
 {
     Console.WriteLine(item);
 }
 Console.WriteLine();
-(double[], double[]) argCoeffBE = HornerAlgorithmExam.CoefficientsAndArgsLittleEnding(arrBE);
-foreach (double num in argCoeffBE.Item1)
-{
-    Console.WriteLine(num);
-}
-Console.WriteLine();
-foreach (double num in argCoeffBE.Item2)
+(double[] arguments, double[] coefficients) argCoeffBE = HornerAlgorithmExam.CoefficientsAndArgsLittleEnding(arrBE);
+/*foreach (double num in argCoeffBE.arguments)
 {
     Console.WriteLine(num);
 }*/
-
-
+Console.WriteLine();
+/*foreach (double num in argCoeffBE.coefficients)
+{
+    Console.WriteLine(num);
+}*/
+/*foreach (double num in argCoeffBE.arguments)
+{
+    Console.WriteLine("Polynomial Value " + HornerAlgorithmExam.PolynomialValue(argCoeffBE.coefficients, num));
+    Console.WriteLine("Posteriori Error " + HornerAlgorithmExam.PosterioriError(argCoeffBE.coefficients, num));
+    Console.WriteLine("Apriori Error " + HornerAlgorithmExam.AprioriError(argCoeffBE.coefficients, num));
+    Console.WriteLine();
+}
+*/
 
 
 /*var a = new[] { 2.0, 3.0, 4.0 };
